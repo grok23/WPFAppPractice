@@ -33,7 +33,7 @@ namespace OddEven
         private void OddButton_Click(object sender, RoutedEventArgs e)      //checks if number is odd or even by seeing if there is a remainder after dviding by 2
         {
             int number;                                                     //variable for number if string converts to int successfully
-            bool ifNumber = int.TryParse(txtBoxNumberIn.Text, out number);  //bool ifNumberis used to hold result of a try parse check on the text box contents
+            bool ifNumber = int.TryParse(txtBoxNumberIn.Text, out number);  //bool ifNumber is used to hold result of a try parse check on the text box contents
 
             if (ifNumber == true)                                           //checks bool ifNumber in case of result true 
             {
