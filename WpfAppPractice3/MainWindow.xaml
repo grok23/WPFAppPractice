@@ -1,0 +1,21 @@
+﻿<Window x:Class="WpfAppPractice3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppPractice3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="800">
+    <Grid>
+        <Button x:Name="btnRoll" Content="Start Game" HorizontalAlignment="Left" Margin="171,67,0,0" VerticalAlignment="Top" Width="153" Click="btnRoll_Click" Height="27"/>
+        <TextBlock x:Name="tblkNumber" HorizontalAlignment="Left" Margin="353,149,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Height="75" Width="75" FontSize="48"/>
+        <Label x:Name="_1stNumber" Content="Initial Number" HorizontalAlignment="Left" Margin="169,164,0,0" VerticalAlignment="Top" Width="155" Height="37" FontSize="20"/>
+        <RadioButton x:Name="rdioHigher" Content="Higher" HorizontalAlignment="Left" Margin="247,266,0,0" VerticalAlignment="Top" Checked="rdioHigher_Checked"/>
+        <RadioButton x:Name="rdioLower" Content="Lower" HorizontalAlignment="Left" Margin="467,269,0,0" VerticalAlignment="Top" Checked="rdioLower_Checked"/>
+        <Button x:Name="btnGuess" Content="Guess" HorizontalAlignment="Left" Margin="171,335,0,0" VerticalAlignment="Top" Width="153" Height="27" Click="btnGuess_Click"/>
+        <Label x:Name="_2ndNumber" Content="Second Number" HorizontalAlignment="Left" Margin="171,424,0,0" VerticalAlignment="Top" Width="153" Height="35" FontSize="20"/>
+        <TextBlock x:Name="tblkNumber1" HorizontalAlignment="Left" Margin="348,408,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Height="75" Width="75" FontSize="48"/>
+        <TextBlock x:Name="tblkWinState" HorizontalAlignment="Left" Margin="286,519,0,0" TextWrapping="Wrap" Text="Are you a winner?" VerticalAlignment="Top" Width="201" Height="51" FontSize="24"/>
+
+    </Grid>
+</Window>
