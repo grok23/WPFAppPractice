@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="OddButton" Content="Button" HorizontalAlignment="Left" Margin="251,153,0,0" VerticalAlignment="Top" Width="131" Height="28" Click="OddButton_Click"/>
+        <Button x:Name="OddButton" Content="Check if Even" HorizontalAlignment="Left" Margin="251,153,0,0" VerticalAlignment="Top" Width="131" Height="28" Click="OddButton_Click"/>
         <TextBlock x:Name="TxtBlkAnswer" HorizontalAlignment="Left" Margin="251,202,0,0" TextWrapping="Wrap" Text="Odd Or Even" VerticalAlignment="Top" Width="131" Height="27" FontSize="18" TextAlignment="Center"/>
         <TextBox x:Name="txtBoxNumberIn" HorizontalAlignment="Left" Height="26" Margin="251,95,0,0" TextWrapping="Wrap" Text="Enter Number" VerticalAlignment="Top" Width="131" FontSize="18" TextAlignment="Center" GotFocus="txtBoxNumberIn_GotFocus"/>
 
