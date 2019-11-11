@@ -23,5 +23,6 @@
         <Line  X1="500" Y1="120" X2="500" Y2="500" Stroke="Black" StrokeThickness="4" />
         <Line  X1="180" Y1="240" X2="640" Y2="240" Stroke="Black" StrokeThickness="4" />
         <Line  X1="180" Y1="370" X2="640" Y2="370" Stroke="Black" StrokeThickness="4" Margin="0,-10,0,10" />
+        <Button x:Name="btnResetBoard" Content="Reset Game" HorizontalAlignment="Left" Margin="324,514,0,0" VerticalAlignment="Top" Width="172" Height="39" FontSize="24" Click="btnResetBoard_Click"/>
     </Grid>
 </Window>

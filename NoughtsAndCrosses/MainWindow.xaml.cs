@@ -107,6 +107,7 @@ namespace NoughtsAndCrosses
             {
                 txtBlkGameInfo.Background = Brushes.Gold;
                 txtBlkGameInfo.Text = $"Player {(player % 2) + 1} is the winner.";//, (player % 2) + 1; //winning player number is found by looking for a remainder again and adding 1 to correct the off by 1 error
+                
                 //btnMove_ClickBoardReset(sender, e); trying to make a reset board function for end game (currently fails due to no input in text box breaking the switch function)
             }
             if (winState == 2)                                          //if winState = 2 the match is a draw
@@ -143,6 +144,11 @@ namespace NoughtsAndCrosses
             }
         }
         private void btnMove_ClickBoardReset(object sender, RoutedEventArgs e)  //trying to build a board reset function into the game
+        {
+            InitializeComponent();
+        }
+
+        private void btnResetBoard_Click(object sender, RoutedEventArgs e)
         {
             InitializeComponent();
         }
