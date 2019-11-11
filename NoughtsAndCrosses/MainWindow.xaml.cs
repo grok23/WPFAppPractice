@@ -35,15 +35,15 @@ namespace NoughtsAndCrosses
             
         }
         private void txtBlkEnterMove_GotFocus(object sender, RoutedEventArgs e)
-        {
+        { 
             txtBlkEnterMove.Text = "";
         }
         private void btnMove_Click(object sender, RoutedEventArgs e)
         {
-           
             
-        //do                                                              //do while to run the loop for the program until the win state is achieved/stalemate is reached 
-        //{
+
+            //do                                                              //do while to run the loop for the program until the win state is achieved/stalemate is reached 
+            //{
             //Console.Clear();                                            //clears the console at the start of a turn 
             //Console.WriteLine("Player 1 is X's and Player 2 is O's.\n");//reminds the players of their counter type
             if (player % 2 != 0)                                        //if to check whose turn it is, a remainder of 0  = player 2, else player 1
@@ -121,8 +121,8 @@ namespace NoughtsAndCrosses
                 //Console.WriteLine("The game was a draw");                   //outputs the draw message
                 txtBlkGameInfo.Text = "The game was a draw";
             }
-
-            
+            txtBlkEnterMove.Text = "";  //clear text box ready for next move
+            Keyboard.Focus(txtBlkEnterMove); //sets focus back on the tex box again so that players don't need to click on it each time
         }
         
         public static int CheckWinState(string[,] board)                          //a method to check for a win state

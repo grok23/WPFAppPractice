@@ -9,15 +9,15 @@
     <Grid x:Name="tx">
         <Button x:Name="btnMove" Content="Confirm Choice" HorizontalAlignment="Left" Margin="423,41,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.462,1.616" Height="23" Click="btnMove_Click"/>
         <TextBox x:Name="txtBlkEnterMove" HorizontalAlignment="Left" Height="23" Margin="245,41,0,0" TextWrapping="Wrap" Text="Choose your move" VerticalAlignment="Top" Width="158" GotFocus="txtBlkEnterMove_GotFocus"/>
-        <TextBlock x:Name="txtBlk1" HorizontalAlignment="Left" Margin="254,138,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="30" Width="70" FontSize="20"/>
-        <TextBlock x:Name="txtBlk2" HorizontalAlignment="Left" Margin="403,142,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Height="30" Width="70" FontSize="20"/>
-        <TextBlock x:Name="txtBlk3" HorizontalAlignment="Left" Margin="548,141,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Height="30" Width="70" FontSize="20"/>
-        <TextBlock x:Name="txtBlk4" HorizontalAlignment="Left" Margin="254,271,0,0" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Height="30" Width="70" FontSize="20"/>
-        <TextBlock x:Name="txtBlk5" HorizontalAlignment="Left" Margin="403,274,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Height="30" Width="70" FontSize="20"/>
-        <TextBlock x:Name="txtBlk6" HorizontalAlignment="Left" Margin="548,277,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Height="30" Width="70" FontSize="20"/>
-        <TextBlock x:Name="txtBlk7" HorizontalAlignment="Left" Margin="254,384,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Height="30" Width="70" FontSize="20"/>
-        <TextBlock x:Name="txtBlk8" HorizontalAlignment="Left" Margin="403,384,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Height="30" Width="70" FontSize="20"/>
-        <TextBlock x:Name="txtBlk9" HorizontalAlignment="Left" Margin="548,384,0,0" TextWrapping="Wrap" Text="9" VerticalAlignment="Top" Height="30" Width="70" FontSize="20"/>
+        <TextBlock x:Name="txtBlk1" HorizontalAlignment="Left" Margin="254,141,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
+        <TextBlock x:Name="txtBlk2" HorizontalAlignment="Left" Margin="403,141,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
+        <TextBlock x:Name="txtBlk3" HorizontalAlignment="Left" Margin="548,141,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
+        <TextBlock x:Name="txtBlk4" HorizontalAlignment="Left" Margin="254,267,0,0" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
+        <TextBlock x:Name="txtBlk5" HorizontalAlignment="Left" Margin="403,267,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
+        <TextBlock x:Name="txtBlk6" HorizontalAlignment="Left" Margin="548,267,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
+        <TextBlock x:Name="txtBlk7" HorizontalAlignment="Left" Margin="254,384,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
+        <TextBlock x:Name="txtBlk8" HorizontalAlignment="Left" Margin="403,384,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
+        <TextBlock x:Name="txtBlk9" HorizontalAlignment="Left" Margin="548,384,0,0" TextWrapping="Wrap" Text="9" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
         <TextBlock x:Name="txtBlkGameInfo" HorizontalAlignment="Left" Margin="222,530,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="373" Height="45" RenderTransformOrigin="0.432,2.596"/>
         <Line  X1="320" Y1="100" X2="320" Y2="500" Stroke="Black" StrokeThickness="4" />
         <Line  X1="500" Y1="100" X2="500" Y2="500" Stroke="Black" StrokeThickness="4" />
