@@ -55,12 +55,12 @@ namespace NoughtsAndCrosses
                     if (player % 2 != 0)                                        //if to check whose turn it is, a remainder of 0  = player 2, else player 1
                     {
                         //Console.Write("Player 1, it's your turn to pick a square : ");//prompt for player 1's turn
-                        txtBlkGameInfo.Text = "Player 1, it's your turn to pick a square : ";
+                        txtBlkGameInfo.Text = "Player 2, it's your turn to pick a square : ";
                     }
                     else
                     {
-                        Console.Write("Player 2, it's your turn to pick a square : ");//prompt for player 2's turn
-                        txtBlkGameInfo.Text = "Player 2, it's your turn to pick a square : ";
+                        //Console.Write("Player 2, it's your turn to pick a square : ");//prompt for player 2's turn
+                        txtBlkGameInfo.Text = "Player 1, it's your turn to pick a square : ";
                     }
 
                     move = int.Parse(txtBlkEnterMove.Text);                       //takes user input for their move as a single int
@@ -101,7 +101,7 @@ namespace NoughtsAndCrosses
                     else                                                        //checks if a position is already occupied and asks them to try again if it is
                     {
                         //Console.WriteLine("Sorry, but position {0} is already occupied by an {1}.\nThe board is being reset.", move, board[row, column]);
-                        txtBlkGameInfo.Text = "Sorry, but position {0} is already occupied by an {1}.\nThe board is being reset.";
+                        txtBlkGameInfo.Text = "Sorry, but position "+ move + "is already occupied by an "+ board[row, column];
                        // System.Threading.Thread.Sleep(3000);                    //delays the thread for 3 seconds, ie: long enough to read why the move can't be played 
                     }
                   
@@ -123,13 +123,14 @@ namespace NoughtsAndCrosses
                 if (winState == 1)                                              //if winState = 1 then we have a winner
                 {
                     //Console.WriteLine("Player {0} is the winner.", (player % 2) + 1);
-                    txtBlkGameInfo.Text = "Player {0} is the winner.";//, (player % 2) + 1; //winning player number is found by looking for a remainder again and adding 1 to correct the off by 1 error
+                    txtBlkGameInfo.Text = "Player "+ ((player % 2) + 1) + " is the winner.";//, (player % 2) + 1; //winning player number is found by looking for a remainder again and adding 1 to correct the off by 1 error
                 }
-                else                                                            //if winState = 2 the match is a draw
+                if (winState == 2)                                                         //if winState = 2 the match is a draw
                 {
                     //Console.WriteLine("The game was a draw");                   //outputs the draw message
                     txtBlkGameInfo.Text = "The game was a draw";
                 }
+
             }
         }
         /*
