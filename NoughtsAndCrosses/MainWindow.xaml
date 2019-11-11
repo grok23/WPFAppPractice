@@ -7,10 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="800">
     <Grid x:Name="tx" Height="619" VerticalAlignment="Bottom">
-        <Button x:Name="btnResetBoard" Content="Reset Game" HorizontalAlignment="Left" Margin="610,88,0,0" VerticalAlignment="Top" Width="115" Height="23" FontSize="14" Click="btnResetBoard_Click" KeyboardNavigation.TabIndex="2"/>
-        <Button x:Name="btnMove" Content="Confirm Choice" HorizontalAlignment="Left" Margin="449,88,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.462,1.616" Height="24" Click="btnMove_Click" KeyboardNavigation.TabIndex="1"/>
-
-        <TextBox x:Name="txtBlkEnterMove" HorizontalAlignment="Left" Height="23" Margin="226,88,0,0" TextWrapping="Wrap" Text="Choose your move" VerticalAlignment="Top" Width="158" GotFocus="txtBlkEnterMove_GotFocus" KeyboardNavigation.TabIndex="0"/>
+        <Button x:Name="btnResetBoard" Content="Reset Game" HorizontalAlignment="Left" Margin="358,517,0,0" VerticalAlignment="Top" Width="115" Height="23" FontSize="14" Click="btnResetBoard_Click" KeyboardNavigation.TabIndex="2"/>
+        <Button x:Name="btnMove" Content="Confirm Choice" HorizontalAlignment="Left" Margin="449,88,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.462,1.616" Height="24" Click="btnMove_Click" KeyboardNavigation.TabIndex="1" />
+        <TextBox x:Name="txtBlkEnterMove" HorizontalAlignment="Left" Height="23" Margin="226,88,0,0" TextWrapping="Wrap" Text="Choose your move" VerticalAlignment="Top" Width="158" GotFocus="txtBlkEnterMove_GotFocus" KeyboardNavigation.TabIndex="0" MaxLength="1" PreviewTextInput="NmbrValidation"/>
         <TextBlock x:Name="txtBlk1" HorizontalAlignment="Left" Margin="254,141,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
         <TextBlock x:Name="txtBlk2" HorizontalAlignment="Left" Margin="403,141,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
         <TextBlock x:Name="txtBlk3" HorizontalAlignment="Left" Margin="548,141,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
