@@ -34,7 +34,26 @@ namespace NoughtsAndCrosses
             InitializeComponent();
             
         }
+        /*public void CreateALine()
+        {
+            // Create a Line  
+            Line leftVertical = new Line();
+            leftVertical.X1 = 50;
+            leftVertical.Y1 = 50;
+            leftVertical.X2 = 50;
+            leftVertical.Y2 = 600;
 
+            // Create a red Brush  
+            SolidColorBrush redBrush = new SolidColorBrush();
+            redBrush.Color = Colors.Red;
+
+            // Set Line's width and color  
+            leftVertical.StrokeThickness = 4;
+            leftVertical.Stroke = redBrush;
+
+            // Add line to the Grid.  
+            //LayoutRoot.Children.Add(leftVertical);
+        }*/
         private void txtBlkEnterMove_GotFocus(object sender, RoutedEventArgs e)
         {
             txtBlkEnterMove.Text = "";
@@ -55,12 +74,12 @@ namespace NoughtsAndCrosses
                     if (player % 2 != 0)                                        //if to check whose turn it is, a remainder of 0  = player 2, else player 1
                     {
                         //Console.Write("Player 1, it's your turn to pick a square : ");//prompt for player 1's turn
-                        txtBlkGameInfo.Text = "Player 2, it's your turn to pick a square : ";
+                        txtBlkGameInfo.Text = "Player 2, it's your turn to pick a square.";
                     }
                     else
                     {
                         //Console.Write("Player 2, it's your turn to pick a square : ");//prompt for player 2's turn
-                        txtBlkGameInfo.Text = "Player 1, it's your turn to pick a square : ";
+                        txtBlkGameInfo.Text = "Player 1, it's your turn to pick a square.";
                     }
 
                     move = int.Parse(txtBlkEnterMove.Text);                       //takes user input for their move as a single int
@@ -104,7 +123,7 @@ namespace NoughtsAndCrosses
                         txtBlkGameInfo.Text = "Sorry, but position "+ move + "is already occupied by an "+ board[row, column];
                        // System.Threading.Thread.Sleep(3000);                    //delays the thread for 3 seconds, ie: long enough to read why the move can't be played 
                     }
-                  
+                  //output the values for the board array to the text boxes
                     txtBlk1.Text = board[0, 0];
                     txtBlk2.Text = board[0, 1];
                     txtBlk3.Text = board[0, 2];
