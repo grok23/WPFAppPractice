@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:NoughtsAndCrosses"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="800">
-    <Grid x:Name="tx">
-        <Button x:Name="btnMove" Content="Confirm Choice" HorizontalAlignment="Left" Margin="423,41,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.462,1.616" Height="23" Click="btnMove_Click"/>
-        <TextBox x:Name="txtBlkEnterMove" HorizontalAlignment="Left" Height="23" Margin="245,41,0,0" TextWrapping="Wrap" Text="Choose your move" VerticalAlignment="Top" Width="158" GotFocus="txtBlkEnterMove_GotFocus"/>
+    <Grid x:Name="tx" Height="619" VerticalAlignment="Bottom">
+        <Button x:Name="btnMove" Content="Confirm Choice" HorizontalAlignment="Left" Margin="449,88,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.462,1.616" Height="24" Click="btnMove_Click"/>
+        <TextBox x:Name="txtBlkEnterMove" HorizontalAlignment="Left" Height="23" Margin="226,88,0,0" TextWrapping="Wrap" Text="Choose your move" VerticalAlignment="Top" Width="158" GotFocus="txtBlkEnterMove_GotFocus"/>
         <TextBlock x:Name="txtBlk1" HorizontalAlignment="Left" Margin="254,141,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
         <TextBlock x:Name="txtBlk2" HorizontalAlignment="Left" Margin="403,141,0,0" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
         <TextBlock x:Name="txtBlk3" HorizontalAlignment="Left" Margin="548,141,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
@@ -18,10 +18,10 @@
         <TextBlock x:Name="txtBlk7" HorizontalAlignment="Left" Margin="254,384,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
         <TextBlock x:Name="txtBlk8" HorizontalAlignment="Left" Margin="403,384,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
         <TextBlock x:Name="txtBlk9" HorizontalAlignment="Left" Margin="548,384,0,0" TextWrapping="Wrap" Text="9" VerticalAlignment="Top" Height="50" Width="70" FontSize="36"/>
-        <TextBlock x:Name="txtBlkGameInfo" HorizontalAlignment="Left" Margin="222,530,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="373" Height="45" RenderTransformOrigin="0.432,2.596"/>
-        <Line  X1="320" Y1="100" X2="320" Y2="500" Stroke="Black" StrokeThickness="4" />
-        <Line  X1="500" Y1="100" X2="500" Y2="500" Stroke="Black" StrokeThickness="4" />
-        <Line  X1="190" Y1="240" X2="620" Y2="240" Stroke="Black" StrokeThickness="4" />
-        <Line  X1="190" Y1="370" X2="620" Y2="370" Stroke="Black" StrokeThickness="4" Margin="0,-10,0,10" />
+        <TextBlock x:Name="txtBlkGameInfo" HorizontalAlignment="Left" Margin="180,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="460" Height="73" RenderTransformOrigin="0.432,2.596" FontSize="24" TextAlignment="Center"/>
+        <Line  X1="320" Y1="120" X2="320" Y2="500" Stroke="Black" StrokeThickness="4" />
+        <Line  X1="500" Y1="120" X2="500" Y2="500" Stroke="Black" StrokeThickness="4" />
+        <Line  X1="180" Y1="240" X2="640" Y2="240" Stroke="Black" StrokeThickness="4" />
+        <Line  X1="180" Y1="370" X2="640" Y2="370" Stroke="Black" StrokeThickness="4" Margin="0,-10,0,10" />
     </Grid>
 </Window>

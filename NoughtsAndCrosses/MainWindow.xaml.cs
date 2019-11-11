@@ -20,44 +20,37 @@ namespace NoughtsAndCrosses
     /// </summary>
     public partial class MainWindow : Window
     {
-        string[,] board = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };        //declares the character array that will represent the board
-        int winState = 0;                                                   //variable for win state of the game: 0 = game in progress, 1 = winner , 2 = draw 
-        int move;                                                           //the variable for the players choice of square
-        int row = 0;                                                        //variable for the index of row  of the board array corresponding to the players choice of square
-        int column = 0;                                                     //variable for the index of column of the board array corresponding to the players choice of square
-        int player = 1;                                                     //sets player to player 1 by default for the start of the game, will track turns by adding 1 after each turn and then checking for a remainder 
+        string[,] board = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };  //declares the 2d array that will represent the board
+        int winState = 0;                                               //variable for win state of the game: 0 = game in progress, 1 = winner , 2 = draw 
+        int move;                                                       //the variable for the players choice of square
+        int row = 0;                                                    //variable for the index of row  of the board array corresponding to the players choice of square
+        int column = 0;                                                 //variable for the index of column of the board array corresponding to the players choice of square
+        int player = 1;                                                 //sets player to player 1 by default for the start of the game, will track turns by adding 1 after each turn and then checking for a remainder 
 
-
-        // need to remove do while loop from btnMove_Click as it can't accept any further input then and gets stuck looping
         public MainWindow()
         {
             InitializeComponent();
-            
+            txtBlkGameInfo.Background = Brushes.White;
+            txtBlkGameInfo.Text = "Let's play Noughts and Crosses. Player one will be X's and player 2 will play O's.";
         }
         private void txtBlkEnterMove_GotFocus(object sender, RoutedEventArgs e)
-        { 
+        {
             txtBlkEnterMove.Text = "";
         }
         private void btnMove_Click(object sender, RoutedEventArgs e)
         {
-            
-
-            //do                                                              //do while to run the loop for the program until the win state is achieved/stalemate is reached 
-            //{
-            //Console.Clear();                                            //clears the console at the start of a turn 
-            //Console.WriteLine("Player 1 is X's and Player 2 is O's.\n");//reminds the players of their counter type
             if (player % 2 != 0)                                        //if to check whose turn it is, a remainder of 0  = player 2, else player 1
             {
-                //Console.Write("Player 1, it's your turn to pick a square : ");//prompt for player 1's turn
+                txtBlkGameInfo.Background = Brushes.White;
                 txtBlkGameInfo.Text = "Player 2, it's your turn to pick a square.";
             }
             else
             {
-                //Console.Write("Player 2, it's your turn to pick a square : ");//prompt for player 2's turn
+                txtBlkGameInfo.Background = Brushes.White;
                 txtBlkGameInfo.Text = "Player 1, it's your turn to pick a square.";
             }
 
-            move = int.Parse(txtBlkEnterMove.Text);                       //takes user input for their move as a single int
+            move = int.Parse(txtBlkEnterMove.Text);                     //takes user input for their move as a single int
             switch (move)                                               //switch for the move variable, allows for translation of the player input of a single int to be translated to a pair of array indices 
             {
                 case 1:                                                 //position 1 = 0,0 in the array, position 2 is 0,1 etc. this carries on till position 9 on the board which is 2,2
@@ -94,9 +87,8 @@ namespace NoughtsAndCrosses
             }
             else                                                        //checks if a position is already occupied and asks them to try again if it is
             {
-                //Console.WriteLine("Sorry, but position {0} is already occupied by an {1}.\nThe board is being reset.", move, board[row, column]);
-                txtBlkGameInfo.Text = "Sorry, but position "+ move + "is already occupied by an "+ board[row, column];
-                // System.Threading.Thread.Sleep(3000);                    //delays the thread for 3 seconds, ie: long enough to read why the move can't be played 
+                txtBlkGameInfo.Background = Brushes.Red;
+                txtBlkGameInfo.Text = $"Sorry, but position {move} is already occupied by an {board[row, column]}. Try another move.";
             }
             //output the values for the board array to the text boxes
             txtBlk1.Text = board[0, 0];
@@ -111,45 +103,48 @@ namespace NoughtsAndCrosses
                  
             winState = CheckWinState(board);                            //calls the CheckWinState method to update the winState variable
 
-            if (winState == 1)                                              //if winState = 1 then we have a winner
+            if (winState == 1)                                          //if winState = 1 then we have a winner
             {
-                //Console.WriteLine("Player {0} is the winner.", (player % 2) + 1);
-                txtBlkGameInfo.Text = "Player "+ ((player % 2) + 1) + " is the winner.";//, (player % 2) + 1; //winning player number is found by looking for a remainder again and adding 1 to correct the off by 1 error
+                txtBlkGameInfo.Background = Brushes.Gold;
+                txtBlkGameInfo.Text = $"Player {(player % 2) + 1} is the winner.";//, (player % 2) + 1; //winning player number is found by looking for a remainder again and adding 1 to correct the off by 1 error
+                //btnMove_ClickBoardReset(sender, e); trying to make a reset board function for end game (currently fails due to no input in text box breaking the switch function)
             }
-            if (winState == 2)                                                         //if winState = 2 the match is a draw
+            if (winState == 2)                                          //if winState = 2 the match is a draw
             {
-                //Console.WriteLine("The game was a draw");                   //outputs the draw message
+                txtBlkGameInfo.Background = Brushes.White;
                 txtBlkGameInfo.Text = "The game was a draw";
             }
-            txtBlkEnterMove.Text = "";  //clear text box ready for next move
-            Keyboard.Focus(txtBlkEnterMove); //sets focus back on the tex box again so that players don't need to click on it each time
+            txtBlkEnterMove.Text = "";                                  //clear text box ready for next move
+            Keyboard.Focus(txtBlkEnterMove);                            //sets focus back on the text box again so that players don't need to click on it each time
         }
         
-        public static int CheckWinState(string[,] board)                          //a method to check for a win state
+        public static int CheckWinState(string[,] board)                //a method to check for a win state
 
         {
             if ((board[0, 0] == board[0, 1] && board[0, 1] == board[0, 2]) || (board[1, 0] == board[1, 1] && board[1, 1] == board[1, 2]) || (board[2, 0] == board[2, 1] && board[2, 1] == board[2, 2])) //winning condition for horizontal rows (is element a the same as element b and is b the same as c)
             {
-                return 1;                                                       //returns 1 for a win
+                return 1;                                               //returns 1 for a win
             }
             else if ((board[0, 0] == board[1, 0] && board[1, 0] == board[2, 0]) || (board[0, 1] == board[1, 1] && board[1, 1] == board[2, 1]) || (board[0, 2] == board[1, 2] && board[1, 2] == board[2, 2])) //winning condition for columns (is element a the same as element b and is b the same as c)
             {
-                return 1;                                                       //returns 1 for a win
+                return 1;                                               //returns 1 for a win
             }
             else if ((board[0, 0] == board[1, 1] && board[1, 1] == board[2, 2]) || (board[2, 0] == board[1, 1] && board[1, 1] == board[0, 2])) //winning condition for diagonals (is element a the same as element b and is b the same as c)
             {
-                return 1;                                                       //returns 1 for a win
+                return 1;                                               //returns 1 for a win
             }
             else if (board[0, 0] != "1" && board[0, 1] != "2" && board[0, 2] != "3" && board[1, 0] != "4" && board[1, 1] != "5" && board[1, 2] != "6" && board[2, 0] != "7" && board[2, 1] != "8" && board[2, 2] != "9") //checking for a filled board without having met a win state, ie: a draw
             {
-                return 2;                                                       //returns 2 for a draw
+                return 2;                                               //returns 2 for a draw
             }
             else
             {
-                return 0;                                                       //if no win state is met and the match hasn't reached a stalemate yet, then return 0 as the game is still in progress
+                return 0;                                               //if no win state is met and the match hasn't reached a stalemate yet, then return 0 as the game is still in progress
             }
         }
-
-        
+        private void btnMove_ClickBoardReset(object sender, RoutedEventArgs e)  //trying to build a board reset function into the game
+        {
+            InitializeComponent();
+        }
     }
 }
