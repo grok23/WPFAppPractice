@@ -34,26 +34,6 @@ namespace NoughtsAndCrosses
             InitializeComponent();
             
         }
-        /*public void CreateALine()
-        {
-            // Create a Line  
-            Line leftVertical = new Line();
-            leftVertical.X1 = 50;
-            leftVertical.Y1 = 50;
-            leftVertical.X2 = 50;
-            leftVertical.Y2 = 600;
-
-            // Create a red Brush  
-            SolidColorBrush redBrush = new SolidColorBrush();
-            redBrush.Color = Colors.Red;
-
-            // Set Line's width and color  
-            leftVertical.StrokeThickness = 4;
-            leftVertical.Stroke = redBrush;
-
-            // Add line to the Grid.  
-            //LayoutRoot.Children.Add(leftVertical);
-        }*/
         private void txtBlkEnterMove_GotFocus(object sender, RoutedEventArgs e)
         {
             txtBlkEnterMove.Text = "";
