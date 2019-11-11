@@ -20,42 +20,65 @@ namespace NoughtsAndCrosses
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {  
+        //declare variables 
         string[,] board = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };  //declares the 2d array that will represent the board
         private readonly string[,] boardReset = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } }; //array to reset the board with
         
        
         int winState = 0;                                               //variable for win state of the game: 0 = game in progress, 1 = winner , 2 = draw 
-        int move;                                                       //the variable for the players choice of square
-        //string move;
-        int row = 0;                                                    //variable for the index of row  of the board array corresponding to the players choice of square
-        int column = 0;                                                 //variable for the index of column of the board array corresponding to the players choice of square
+        int move;                                                       //variable holds the players choice of square        
+        int row = 0;                                                    //variables for the index of row and columns of the board array corresponding to the players choice of square
+        int column = 0;                                                 
         int player = 1;                                                 //sets player to player 1 by default for the start of the game, will track turns by adding 1 after each turn and then checking for a remainder 
 
-        public string[,] BoardReset()                                   //method to clone the boardReset array, (stops the board reset function only working once)
-        {
-            return (string[,])boardReset.Clone();                       //clones the array to stop the original being altered
-        }
-
+        //main window initialised
         public MainWindow()
         {
             InitializeComponent();
             txtBlkGameInfo.Background = Brushes.White;
             txtBlkGameInfo.Text = "Let's play Noughts and Crosses. Player one will be X's and player 2 will play O's.";
         }
-        private void txtBlkEnterMove_GotFocus(object sender, RoutedEventArgs e)
+
+        //event handling functions
+        private void txtBoxEnterMove_GotFocus(object sender, RoutedEventArgs e)//clears the text from the text block
         {
-            txtBlkEnterMove.Text = "";
+            txtBoxEnterMove.Text = "";
         }
 
-        private void NmbrValidation(object sender, TextCompositionEventArgs e)  //restricts characters entered into the text box to digits 1-9
+        private void NmbrValidation(object sender, TextCompositionEventArgs e)//restricts characters entered into the text box to digits 1-9
         {
             Regex regex = new Regex("[^1-9]");
             e.Handled = regex.IsMatch(e.Text);
         }
-        private void btnMove_Click(object sender, RoutedEventArgs e)
+        private void btnMove_Click(object sender, RoutedEventArgs e)    //calls the PlayGame method when the move button is clicked
         {
-            
+            PlayGame();
+        }
+        private void txtBoxEnterMove_KeyDown(object sender, KeyEventArgs e)//calls the PlayGame method when the enter key is pressed in the textbox
+        {
+            if (e.Key == Key.Enter)
+            {
+                PlayGame();
+            }
+        }
+        private void btnResetBoard_Click(object sender, RoutedEventArgs e)
+        {
+            board = BoardReset();                                       //calls method to reset the array holding the board
+            winState = 0;                                               //reset all the variables and textbox and move focus back to the text box
+            row = 0;
+            column = 0;
+            player = 1;
+            txtBoxEnterMove.Text = "Choose your move";
+            Keyboard.Focus(txtBoxEnterMove);
+            DisplayBoard();                                             //call displayboard to show the reset board
+            txtBlkGameInfo.Background = Brushes.White;
+            txtBlkGameInfo.Text = "Playing again? Player one will be X's and player 2 will play O's.";
+        }
+
+        //methods associated with the game itself
+        private void PlayGame()                                         //method that runs the game
+        { 
             move = 0;
             if (player % 2 != 0)                                        //if to check whose turn it is
             {
@@ -67,9 +90,9 @@ namespace NoughtsAndCrosses
                 txtBlkGameInfo.Background = Brushes.White;
                 txtBlkGameInfo.Text = "Player 1, it's your turn to pick a square.";
             }
-            if (txtBlkEnterMove.Text != "")                             //checks that the textbox has a value in it
+            if (txtBoxEnterMove.Text != "")                             //checks that the textbox has a value in it
             {
-                move = int.Parse(txtBlkEnterMove.Text);                 //value enters the switch statement
+                move = int.Parse(txtBoxEnterMove.Text);                 //value enters the switch statement
                 switch (move)                                           //switch for the move variable, allows for translation of the player input of a single int to be translated to a pair of array indices 
                 {
                     case 1:                                             //position 1 = 0,0 in the array, position 2 is 0,1 etc. this carries on till position 9 on the board which is 2,2
@@ -117,7 +140,7 @@ namespace NoughtsAndCrosses
                 {
                     txtBlkGameInfo.Background = Brushes.Gold;
                     txtBlkGameInfo.Text = $"Player {(player % 2) + 1} is the winner.";//, (player % 2) + 1; //winning player number is found by looking for a remainder again and adding 1 to correct the off by 1 error    
-                    Keyboard.Focus(btnResetBoard);                      //sets focus on the reset board button
+                    Keyboard.Focus(btnResetBoard);                      //sets keyboard focus on the reset board button if players are using the enter key to confirm moves
                 }
                 if (winState == 2)                                      //if winState = 2 the match is a draw
                 {
@@ -127,20 +150,19 @@ namespace NoughtsAndCrosses
                 }
                 else if (winState == 0)
                 {
-                    txtBlkEnterMove.Text = "";                          //clear text box ready for next move
-                    Keyboard.Focus(txtBlkEnterMove);                    //sets focus back on the text box again so that players don't need to click on it each time
+                    txtBoxEnterMove.Text = "";                          //clear text box ready for next move
+                    Keyboard.Focus(txtBoxEnterMove);                    //sets focus back on the text box again so that players don't need to click on it each time
                 }
             }
-            else if (txtBlkEnterMove.Text == "")                        //in the case of no value being entered when button is clicked, prompts user to enter a valid one
+            else if (txtBoxEnterMove.Text == "")                        //in the case of no value being entered when button is clicked, prompts user to enter a valid one
             {
                 txtBlkGameInfo.Background = Brushes.Red;
                 txtBlkGameInfo.Text = "Please choose a valid move";
-                txtBlkEnterMove.Text = "";                              //clear text box ready for next move
-                Keyboard.Focus(txtBlkEnterMove);
-            }
-            
+                txtBoxEnterMove.Text = "";                              //clear text box ready for next move
+                Keyboard.Focus(txtBoxEnterMove);
+            }      
         }
-        
+
         public static int CheckWinState(string[,] board)                //a method to check for a win state
 
         {
@@ -165,23 +187,8 @@ namespace NoughtsAndCrosses
                 return 0;                                               //if no win state is met and the match hasn't reached a stalemate yet, then return 0 as the game is still in progress
             }
         }
-        
-        private void btnResetBoard_Click(object sender, RoutedEventArgs e)
-        {
-            //reset all the variables
-            board = BoardReset();
-            winState = 0;
-            row = 0;                                                    
-            column = 0;                                                 
-            player = 1;
-            txtBlkEnterMove.Text = "Choose your move";
-            Keyboard.Focus(txtBlkEnterMove);
-            DisplayBoard();                                             //call displayboard to show the reset board
-            txtBlkGameInfo.Background = Brushes.White;
-            txtBlkGameInfo.Text = "Playing again? Player one will be X's and player 2 will play O's.";
-        }
-
-        private void DisplayBoard()
+       
+        private void DisplayBoard()                                     //method to display the game board stored in the board array
         {
             txtBlk1.Text = board[0, 0];
             txtBlk2.Text = board[0, 1];
@@ -192,6 +199,11 @@ namespace NoughtsAndCrosses
             txtBlk7.Text = board[2, 0];
             txtBlk8.Text = board[2, 1];
             txtBlk9.Text = board[2, 2];
-        }        
+        }
+
+        public string[,] BoardReset()                                   //method to clone the boardReset array, (stops the board reset function only working once)
+        {
+            return (string[,])boardReset.Clone();                       //clones the array to stop the original being altered
+        }
     }
 }
