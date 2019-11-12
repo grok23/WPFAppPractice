@@ -94,7 +94,7 @@ namespace NoughtsAndCrosses
             }
             if (txtBoxEnterMove.Text != "")                             //checks that the textbox has a value in it
             {
-                move = int.Parse(txtBoxEnterMove.Text);                 //value enters the switch statement
+                move = int.Parse(txtBoxEnterMove.Text);                 //value enters the switch statement. would use TryParse here, but I've already restricted character entry to a single digit only, so it's unnecessary this time.
                 switch (move)                                           //switch for the move variable, allows for translation of the player input of a single int to be translated to a pair of array indices 
                 {
                     case 1:                                             //position 1 = 0,0 in the array, position 2 is 0,1 etc. this carries on till position 9 on the board which is 2,2
