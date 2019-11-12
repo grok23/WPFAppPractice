@@ -23,9 +23,7 @@ namespace NoughtsAndCrosses
     {  
         //declare variables 
         string[,] board = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };  //declares the 2d array that will represent the board
-        private readonly string[,] boardReset = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } }; //array to reset the board with
-        
-       
+        private readonly string[,] boardReset = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } }; //array to reset the board with 
         int winState = 0;                                               //variable for win state of the game: 0 = game in progress, 1 = winner , 2 = draw 
         int move;                                                       //variable holds the players choice of square        
         int row = 0;                                                    //variables for the index of row and columns of the board array corresponding to the players choice of square
@@ -51,10 +49,12 @@ namespace NoughtsAndCrosses
             Regex regex = new Regex("[^1-9]");
             e.Handled = regex.IsMatch(e.Text);
         }
+
         private void btnMove_Click(object sender, RoutedEventArgs e)    //calls the PlayGame method when the move button is clicked
         {
             PlayGame();
         }
+
         private void txtBoxEnterMove_KeyDown(object sender, KeyEventArgs e)//calls the PlayGame method when the enter key is pressed in the textbox
         {
             if (e.Key == Key.Enter)
@@ -62,6 +62,7 @@ namespace NoughtsAndCrosses
                 PlayGame();
             }
         }
+
         private void btnResetBoard_Click(object sender, RoutedEventArgs e)
         {
             board = BoardReset();                                       //calls method to reset the array holding the board
@@ -72,8 +73,9 @@ namespace NoughtsAndCrosses
             txtBoxEnterMove.Text = "Choose your move";
             Keyboard.Focus(txtBoxEnterMove);
             DisplayBoard();                                             //call displayboard to show the reset board
-            txtBlkGameInfo.Background = Brushes.White;
-            txtBlkGameInfo.Text = "Playing again? Player one will be X's and player 2 will play O's.";
+            txtBlkGameInfo.Background = Brushes.White;                  //reset the buttons and text blocks to starting colours + display new welcome message
+            btnResetBoard.Background = Brushes.White;
+            txtBlkGameInfo.Text = "Playing again? Player one will be X's and player 2 will play O's.";                
         }
 
         //methods associated with the game itself
@@ -140,12 +142,14 @@ namespace NoughtsAndCrosses
                 {
                     txtBlkGameInfo.Background = Brushes.Gold;
                     txtBlkGameInfo.Text = $"Player {(player % 2) + 1} is the winner.";//, (player % 2) + 1; //winning player number is found by looking for a remainder again and adding 1 to correct the off by 1 error    
+                    btnResetBoard.Background = Brushes.LawnGreen;
                     Keyboard.Focus(btnResetBoard);                      //sets keyboard focus on the reset board button if players are using the enter key to confirm moves
                 }
                 if (winState == 2)                                      //if winState = 2 the match is a draw
                 {
                     txtBlkGameInfo.Background = Brushes.White;
                     txtBlkGameInfo.Text = "The game was a draw";
+                    btnResetBoard.Background = Brushes.LawnGreen;
                     Keyboard.Focus(btnResetBoard);
                 }
                 else if (winState == 0)
