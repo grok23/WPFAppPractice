@@ -24,6 +24,8 @@
         <Line  X1="500" Y1="120" X2="500" Y2="500" Stroke="Black" StrokeThickness="4" />
         <Line  X1="180" Y1="240" X2="640" Y2="240" Stroke="Black" StrokeThickness="4" />
         <Line  X1="180" Y1="370" X2="640" Y2="370" Stroke="Black" StrokeThickness="4" Margin="0,-10,0,10" />
+        <TextBlock x:Name="txtblkStalemate" HorizontalAlignment="Left" Margin="77,470,0,0" TextWrapping="Wrap" Text="Stalemate TextBlock" VerticalAlignment="Top" Height="89" Width="118" FontSize="20"/>
+        <Label x:Name="Stalemate" Content="Stalemate Level" HorizontalAlignment="Left" Margin="74,416,0,0" VerticalAlignment="Top" Width="107"/>
 
     </Grid>
 </Window>

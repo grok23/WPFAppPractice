@@ -152,6 +152,13 @@ namespace NoughtsAndCrosses
                     btnResetBoard.Background = Brushes.LawnGreen;
                     Keyboard.Focus(btnResetBoard);
                 }
+                if (winState == 3)                                      //if winState = 3 the match is a stalemate
+                {
+                    txtBlkGameInfo.Background = Brushes.White;
+                    txtBlkGameInfo.Text = "The game has reached a stalemate.";
+                    btnResetBoard.Background = Brushes.LawnGreen;
+                    Keyboard.Focus(btnResetBoard);
+                }
                 else if (winState == 0)
                 {
                     txtBoxEnterMove.Text = "";                          //clear text box ready for next move
@@ -167,9 +174,117 @@ namespace NoughtsAndCrosses
             }      
         }
 
-        private static int CheckWinState(string[,] board)               //a method to check for a win state
+        private int CheckWinState(string[,] board)               //a method to check for a win state
 
         {
+            int r1ContainsO = 0, r1ContainsX = 0, r2ContainsO = 0, r2ContainsX = 0, r3ContainsO = 0, r3ContainsX = 0;
+            int c1ContainsO = 0, c1ContainsX = 0, c2ContainsO = 0, c2ContainsX = 0, c3ContainsO = 0, c3ContainsX = 0;
+            int d1ContainsO = 0, d1ContainsX = 0, d2ContainsO = 0, d2ContainsX = 0;
+            int r1Stalemate = 0, r2Stalemate = 0, r3Stalemate = 0, c1Stalemate = 0, c2Stalemate = 0, c3Stalemate = 0, d1Stalemate = 0, d2Stalemate = 0, stalemate = 0;
+            
+            if (board[0, 0] == "X" || board[0, 1] == "X" || board[0, 2] == "X")  //checks if any elements of row1 contain X
+            {
+                r1ContainsX = 1;                                               //returns 1 if an X is found
+            }
+            if (board[0, 0] == "O" || board[0, 1] == "O" || board[0, 2] == "O")  //checks if any elements of a row contain O
+            {
+                r1ContainsO = 1;                                               //returns 1 if an O is found
+            }
+            if (r1ContainsO == 1 && r1ContainsX == 1)              //checks to see if both an X and an O are found in the row and returns 1 if they are
+            {
+                r1Stalemate = 1; stalemate++;
+            }
+            if (board[1, 0] == "X" || board[1, 1] == "X" || board[1, 2] == "X")  //checks if any elements of row2 contain X
+            {
+                r2ContainsX = 1;                                               //returns 1 if an X is found
+            }
+            if (board[1, 0] == "O" || board[1, 1] == "O" || board[1, 2] == "O")  //winning condition for horizontal rows (is element a the same as element b and is b the same as c)
+            {
+                r2ContainsO = 1;                                               //returns 1 for a win
+            }
+            if (r2ContainsO == 1 && r2ContainsX == 1)               //checks to see if both an X and an O are found in the second row and returns 1 if they both are
+            {
+                r2Stalemate = 1; stalemate++;
+            }
+            if (board[2, 0] == "X" || board[2, 1] == "X" || board[2, 2] == "X")  //checks if any elements of row2 contain X
+            {
+                r3ContainsX = 1;                                               //returns 1 if an X is found
+            }
+            if (board[2, 0] == "O" || board[2, 1] == "O" || board[2, 2] == "O")  //winning condition for horizontal rows (is element a the same as element b and is b the same as c)
+            {
+                r3ContainsO = 1;                                               //returns 1 for a win
+            }
+            if (r3ContainsO == 1 && r3ContainsX == 1)               //checks to see if both an X and an O are found in the second row and returns 1 if they both are
+            {
+                r3Stalemate = 1; stalemate++;
+            }
+            if (board[0, 0] == "X" || board[1, 0] == "X" || board[2, 0] == "X")  //checks if any elements of column1 contain X
+            {
+                c1ContainsX = 1;                                               //returns 1 if an X is found
+            }
+            if (board[0, 0] == "O" || board[1, 0] == "O" || board[2, 0] == "O")  //checks if any elements of a column contain O
+            {
+                c1ContainsO = 1;                                               //returns 1 if an O is found
+            }
+            if (c1ContainsO == 1 && c1ContainsX == 1)               //checks to see if both an X and an O are found in the column and returns 1 if they are
+            {
+                c1Stalemate = 1; stalemate++;
+            }
+            if (board[0, 1] == "X" || board[1, 1] == "X" || board[2, 1] == "X")  //checks if any elements of column2 contain X
+            {
+                c2ContainsX = 1;                                               //returns 1 if an X is found
+            }
+            if (board[0, 1] == "O" || board[1, 1] == "O" || board[2, 1] == "O")  //checks if any elements of column 2 contain O
+            {
+                c2ContainsO = 1;                                               //returns 1 if an O is found
+            }
+            if (c2ContainsO == 1 && c2ContainsX == 1)               //checks to see if both an X and an O are found in the column and returns 1 if they are
+            {
+                c2Stalemate = 1; stalemate++;
+            }
+            if (board[0, 2] == "X" || board[1, 2] == "X" || board[2, 2] == "X")  //checks if any elements of column2 contain X
+            {
+                c3ContainsX = 1;                                               //returns 1 if an X is found
+            }
+            if (board[0, 2] == "O" || board[1, 2] == "O" || board[2, 2] == "O")  //checks if any elements of column 2 contain O
+            {
+                c2ContainsO = 1;                                               //returns 1 if an O is found
+            }
+            if (c3ContainsO == 1 && c3ContainsX == 1)               //checks to see if both an X and an O are found in the column and returns 1 if they are
+            {
+                c3Stalemate = 1; stalemate++;
+            }
+            if (board[0, 0] == "X" || board[1, 1] == "X" || board[2, 2] == "X")  //checks if any elements of diagonal1 contain X
+            {
+                d1ContainsX = 1;                                               //returns 1 if an X is found
+            }
+            if (board[0, 0] == "O" || board[1, 1] == "O" || board[2, 2] == "O")  //checks if any elements of diagonal1 contain O
+            {
+                d1ContainsO = 1;                                               //returns 1 if an O is found
+            }
+            if (d1ContainsO == 1 && d1ContainsX == 1)               //checks to see if both an X and an O are found in the diagonal1 and returns 1 if they are
+            {
+                d1Stalemate = 1; stalemate++;
+            }
+            if (board[2, 0] == "X" || board[1, 1] == "X" || board[0, 2] == "X")  //checks if any elements of diagonal2 contain X
+            {
+                d2ContainsX = 1;                                               //returns 1 if an X is found
+            }
+            if (board[2, 0] == "O" || board[1, 1] == "O" || board[0, 2] == "O")  //checks if any elements of diagonal2 contain O
+            {
+                d2ContainsO = 1;                                               //returns 1 if an O is found
+            }
+            if (d2ContainsO == 1 && d2ContainsX == 1)               //checks to see if both an X and an O are found in the diagonal2 and returns 1 if they are
+            {
+                d2Stalemate = 1; stalemate++;
+            }
+            txtblkStalemate.Text = $"{stalemate}";
+            if (stalemate > 7)
+            {
+                
+                return 3; //return winstate of 3  -- add new winstate == 3 where you output to text box that stalemate might be reached and highlight the reset board button
+            }
+
             if ((board[0, 0] == board[0, 1] && board[0, 1] == board[0, 2]) || (board[1, 0] == board[1, 1] && board[1, 1] == board[1, 2]) || (board[2, 0] == board[2, 1] && board[2, 1] == board[2, 2])) //winning condition for horizontal rows (is element a the same as element b and is b the same as c)
             {
                 return 1;                                               //returns 1 for a win
@@ -190,6 +305,7 @@ namespace NoughtsAndCrosses
             {
                 return 0;                                               //if no win state is met and the match hasn't reached a stalemate yet, then return 0 as the game is still in progress
             }
+            
         }
        
         private void DisplayBoard()                                     //method to display the game board stored in the board array
