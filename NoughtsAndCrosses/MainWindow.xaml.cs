@@ -17,7 +17,8 @@ using System.Windows.Shapes;
 namespace NoughtsAndCrosses
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml 
+    /// Alasdair Macdonald @ Sligo IT
     /// </summary>
     public partial class MainWindow : Window
     {  
